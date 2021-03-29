@@ -5,7 +5,19 @@ class Atm
     @funds = 1000
   end
 
-  def withdraw(amount)
-    @funds -= amount
+  def withdraw(amount, account)
+
+    case
+    when amount > account.balance
+      # place holder for negative value
+      return 
+    else
+      
+      @funds -= amount
+
+      account.balance = account.balance - amount
+
+      { status: true, message: 'success', date: Date.today, amount: amount }
+    end
   end
 end
