@@ -1,3 +1,5 @@
+require 'pry'
+
 class Atm 
   attr_accessor :funds
 
