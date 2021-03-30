@@ -1,5 +1,6 @@
 require 'pry'
 
+#test push
 class Atm 
   attr_accessor :funds
 
