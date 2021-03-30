@@ -15,7 +15,9 @@ class Atm
     when incorrect_pin?(pin_code, account.pin_code)
       { status:false, message: 'wrong PIN', date: Date.today }
     when card_expired?(account.exp_date)
-      { status: false, message: 'card expired', date: Date.today }    
+      { status: false, message: 'card expired', date: Date.today }
+    when account_active?(account.account_status)
+      { status:false, message: 'account disabled', date: Date.today }
     else
       perform_transaction(amount, account)
     end
@@ -37,6 +39,10 @@ class Atm
 
   def card_expired?(exp_date)
     Date.strptime(exp_date, '%m/%y') < Date.today
+  end
+
+  def account_active?(account_status)
+    account_status != :active
   end
 
   def perform_transaction(amount, account)
