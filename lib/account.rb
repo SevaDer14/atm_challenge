@@ -2,10 +2,8 @@ require "pry"
 
 class Account
     STANDARD_VALIDITY_YRS = 5
-    attr_accessor :pin_code
-    attr_accessor :exp_date
+    attr_reader :pin_code, :exp_date, :owner
     attr_accessor :account_status
-    attr_accessor :owner
     
     
     #ICOMPLETE: add possibility for 0000 PIN generation 
