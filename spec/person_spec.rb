@@ -17,7 +17,9 @@ describe Person do
     expect(subject.cash).to eq 0
   end
 
-
+  it 'is expected to have a :account attribute ' do 
+    expect(subject.account).to be nil
+  end
 
 
 end
