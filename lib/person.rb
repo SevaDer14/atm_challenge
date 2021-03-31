@@ -1,4 +1,5 @@
 require 'pry'
+require './lib/account'
 
 class Person
   attr_accessor :name, :cash, :account
@@ -7,6 +8,10 @@ class Person
     set_name(attrs[:name])
     @cash = 0
     @account = nil
+  end
+
+  def create_account
+    @account = Account.new(owner: self)
   end
   
   def set_name(obj)
