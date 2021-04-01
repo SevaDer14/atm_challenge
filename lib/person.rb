@@ -7,7 +7,7 @@ class Person
 
   def initialize(attrs = {}) 
     set_name(attrs[:name])
-    @cash = 200
+    @cash = 0
     @account = nil
   end
 

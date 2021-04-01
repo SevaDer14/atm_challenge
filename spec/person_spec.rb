@@ -1,5 +1,6 @@
 require './lib/person'
 require './lib/atm'
+require './lib/account'
 require 'date'
 
 describe Person do
@@ -15,7 +16,7 @@ describe Person do
   end
 
   it 'is expected to have a :cash attribute with the value of 0 on initialize' do 
-    expect(subject.cash).to eq 200
+    expect(subject.cash).to eq 0
   end
 
   it 'is expected to have a :account attribute ' do 
@@ -40,6 +41,14 @@ describe Person do
     it 'can deposit funds' do
       expect(subject.deposit(100)).to be_truthy
     end
+
+    it 'funds are added to the account balance - deducted from cash' do
+      subject.cash = 100
+      subject.deposit(100)
+      expect(subject.account.balance).to be 100
+      expect(subject.cash).to be 0
+    end
+
   end
 
   describe 'can not manage funds if no account been created' do
