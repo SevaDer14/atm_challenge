@@ -19,12 +19,12 @@ class Person
     obj == nil ? missing_name : @name = obj
   end
 
-  def deposit(amount)
+  def deposit(amount, atm)
     if @account == nil
       raise RuntimeError, 'No account present'
     else    
       @cash -= amount
-      atm = Atm.new    
+      #atm = Atm.new    
       atm.deposit(amount, @account)
     end
   end
@@ -34,7 +34,9 @@ class Person
     if atm == nil
       raise "An ATM is required"
     else
-      atm.withdraw(attrs[:amount], attrs[:pin_code], attrs[:account])
+      @cash += attrs[:amount]
+      @account.balance -= attrs[:amount]      
+      atm.withdraw(attrs[:amount], attrs[:pin], attrs[:account])
     end
   end
 

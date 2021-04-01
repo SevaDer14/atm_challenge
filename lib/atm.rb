@@ -22,7 +22,7 @@ class Atm
       { status: false, message: 'card expired', date: Date.today }
     when account_active?(account.account_status)
       { status:false, message: 'account disabled', date: Date.today }
-    else
+    else      
       perform_transaction(amount, account)
     end
   end
@@ -57,8 +57,10 @@ class Atm
   def perform_transaction(amount, account)
     # deduct the amount from ATM funds
     @funds -= amount
+    
     # deduct the amount from user balance
-    account.balance = account.balance - amount
+    
+    
     # output message of successful withdraw
     { status: true, message: 'success', date: Date.today, amount: amount, bills: add_bills(amount) }     
   end
