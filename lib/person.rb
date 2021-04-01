@@ -33,10 +33,14 @@ class Person
     atm = attrs[:atm]
     if atm == nil
       raise "An ATM is required"
-    else
-      @cash += attrs[:amount]
-      @account.balance -= attrs[:amount]      
-      atm.withdraw(attrs[:amount], attrs[:pin], attrs[:account])
+    else          
+      response = atm.withdraw(attrs[:amount], attrs[:pin], attrs[:account])
+      if response[:status] == true
+        @cash += attrs[:amount]
+        @account.balance -= attrs[:amount]
+      else
+        response
+      end
     end
   end
 
