@@ -29,6 +29,15 @@ class Person
     end
   end
 
+  def withdraw(attrs = {})
+    atm = attrs[:atm]
+    if atm == nil
+      raise "An ATM is required"
+    else
+      atm.withdraw(attrs[:amount], attrs[:pin_code], attrs[:account])
+    end
+  end
+
   private
 
   
