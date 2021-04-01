@@ -1,4 +1,5 @@
 require 'pry'
+require './lib/person'
 
 #test push
 class Atm 
@@ -26,6 +27,11 @@ class Atm
     end
   end
 
+  def deposit(amount, account)
+    account.balance += amount       
+    @funds += amount
+  end
+
   private
 
   def insufficient_funds_in_account?(amount, account)
@@ -46,7 +52,7 @@ class Atm
 
   def account_active?(account_status)
     account_status != :active
-  end
+  end  
 
   def perform_transaction(amount, account)
     # deduct the amount from ATM funds
