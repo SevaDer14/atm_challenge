@@ -1,6 +1,7 @@
 require 'pry'
 require './lib/account'
-require './lib/atm'
+require './lib/atm.rb'
+require 'date'
 
 class Person
   attr_accessor :name, :cash, :account
@@ -38,6 +39,7 @@ class Person
       if response[:status] == true
         @cash += attrs[:amount]
         @account.balance -= attrs[:amount]
+        response
       else
         response
       end
